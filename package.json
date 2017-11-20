@@ -1,0 +1,24 @@
+{
+  "name": "durrant-tech",
+  "version": "0.1.0",
+  "description": "my personal website",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "nodemon --experimental-modules index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JDDurrant/durrant-tech.git"
+  },
+  "keywords": [
+    "express",
+    "es6",
+    "mvc"
+  ],
+  "author": "Jack Durrant",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/JDDurrant/durrant-tech/issues"
+  },
+  "homepage": "https://github.com/JDDurrant/durrant-tech#readme"
+}
