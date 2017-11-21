@@ -4,7 +4,7 @@
   "description": "my personal website",
   "main": "index.mjs",
   "scripts": {
-    "test": "nodemon --experimental-modules index.mjs"
+    "test": "node --experimental-modules index.mjs"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/JDDurrant/durrant-tech/issues"
   },
-  "homepage": "https://github.com/JDDurrant/durrant-tech#readme"
+  "homepage": "https://github.com/JDDurrant/durrant-tech#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2"
+  }
 }
