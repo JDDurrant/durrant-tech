@@ -3,6 +3,7 @@ import ejs from 'ejs';
 import express from 'express';
 //import './models/mongodb';
 import { users } from './models/user';
+import home from './controllers/home';
 
 const app = express();
 
@@ -12,12 +13,7 @@ app.set('views', './src/views');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res, next) => {
-	const query = users.get({});
-
-	query.then(data => res.render('index', { data: data }));
-	//res.render('index');
-});
+app.get('/', home);
 
 app.post('/add-user', (req, res, next) => {
 	const query = users.insert(req.body);
