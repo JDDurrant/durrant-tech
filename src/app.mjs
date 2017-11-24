@@ -15,6 +15,8 @@ app.set('views', './src/views');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static('./src/public'));
+
 app.use(router);
 
 /*app.post('/add-user', (req, res, next) => {
