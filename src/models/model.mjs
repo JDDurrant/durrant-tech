@@ -7,12 +7,23 @@ export default class Model {
 		this.collection = db.get(collection);
 	}
 
-	get(object, fn) {
-		return this.collection.find(object);
+	find(object, fn) {
+		object = object || {};
+		fn = fn || false;
+
+		const query = this.collection.find(object);
+
+		if(fn) query.then(fn);
+
+		return query;
 	}
 
 	insert(object, fn) {
-		return this.collection.insert(object);
+		const query = this.collection.insert(object);
+
+		if(fn) query.then(fn);
+
+		return query;
 	}
 
 	isValid() {

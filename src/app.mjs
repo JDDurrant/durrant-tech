@@ -2,9 +2,9 @@ import bodyParser from 'body-parser';
 import ejs from 'ejs';
 import express from 'express';
 
-import home from './controllers/home';
+//import home from './controllers/home';
 //import './models/mongodb';
-import { users } from './models/user';
+//import { users } from './models/user';
 import router from './router';
 
 const app = express();

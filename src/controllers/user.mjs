@@ -1,8 +1,10 @@
-import { users } from '../models/user';
+import User from '../models/user';
 
-export default class User {
+export default class UserController {
+
 	static add(req, res, next) {
-		const query = users.insert(req.body);
+
+		const query = User.insert(req.body);
 		query.then(() => res.redirect('/'));
 	}
 }
