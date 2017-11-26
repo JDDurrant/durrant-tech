@@ -2,32 +2,12 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Hello, World!</title>
-	<link rel="stylesheet" type="text/css" href="/style.css" />
+	<title><%= page.title %> - <%= site.title %></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/<%= page.theme %>.css" />
 </head>
 <body>
-	<h1>Hello, World!</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>First Name</td>
-				<th>Surname</td>
-			</tr>
-		</thead>
-		<tbody>
-			<!-- Add a 'for' loop here -->
-			<% data.forEach(item => { %>
-			<tr>
-				<td><%= item.fname %></td>
-				<td><%= item.sname %></td>
-			</tr>
-			<% }) %>
-		</tbody>
-	</table>
-	<form action="/add-user" method="post">
-		<input name="fname" />
-		<input name="sname" />
-		<button type="submit">Add</button>
-	</form>
+	<%- include('modules/navigation/navigation', { site: site}) %>
+	<%- include(`modules/${template}/${template}`, { page: page}) %>
 </body>
 </html>
