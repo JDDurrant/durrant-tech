@@ -1,32 +1,44 @@
+import Joi from 'joi';
+
 import Model from './model';
 
-const model = new Model('users');
-
 export default class UserModel extends Model {
-	constructor(user) {
-		super();
 
+	constructor(user) {
 		this.fname = user.fname;
 		this.sname = user.sname;
 		this.email = user.email;
+	}
 
-		//this.model = new Model('users');
-		console.log(model);
+	static get collection() {
+		return Model.db.get('users');
+	}
+
+	static get schema() {
+		return Joi.object().keys({
+			fname: Joi.string().alphanum().max(20).required(),
+			sname: Joi.string().alphanum().max(20).required(),
+			email: Joi.string().email().required()
+		});
 	}
 
 	static find(object, fn) {
-		return model.find(object, fn);
+		return UserModel.collection.find(object, fn);
 	}
 
 	static insert(object, fn) {
-		return model.insert(object, fn);
+		return UserModel.collection.insert(object, fn);
 	}
 
-	get isValid() {
-		if(this.email.includes(' ')) {
-			return false;
-		}
-		
-		return true;
+	insert(fn) {
+
 	}
+
+	// get isValid() {
+	// 	if(this.email.includes(' ')) {
+	// 		return false;
+	// 	}
+		
+	// 	return true;
+	// }
 }

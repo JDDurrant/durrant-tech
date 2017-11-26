@@ -7,7 +7,14 @@ import express from 'express';
 //import { users } from './models/user';
 import router from './router';
 
+import site from '../site.json';
+
+const host = process.env.HOST || '127.0.0.1';
+const port = process.env.PORT || 3000;
+
 const app = express();
+
+app.locals.site = site;
 
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
@@ -27,6 +34,6 @@ app.use(router);
 	//res.redirect('/');
 });*/
 
-app.listen(3000, () => {
-	console.log('Listening on 3000...');
+app.listen(port, host, () => {
+	console.log('Listening on %s:%d', host, port);
 });

@@ -4,6 +4,7 @@
   "description": "my personal website",
   "main": "index.mjs",
   "scripts": {
+    "pre-deploy": "node --experimental-modules build.mjs",
     "test": "node --experimental-modules index.mjs"
   },
   "repository": {
@@ -23,8 +24,11 @@
   "homepage": "https://github.com/JDDurrant/durrant-tech#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
-    "monk": "^6.0.5"
+    "joi": "^13.0.2",
+    "monk": "^6.0.5",
+    "prompt": "^1.0.0"
   }
 }
