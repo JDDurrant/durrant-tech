@@ -3,22 +3,18 @@ import Joi from 'joi';
 import User from '../models/user';
 
 export default class UserController {
-	// Currently ordered by execution
-	static validate(req, res, next) {
-		return User.validate(req, res, next);
-	}
 	// GET
 	static form(req, res, next) {
-
+		//add-user
 	}
 	// POST
 	static save(req, res, next) {
+		//add-user
+		const insert = User.insert(req.body);
 
-		if(res.locals.valid) {
-			const query = User.insert(req.body);
-			query.then(() => res.redirect('/'));
-		}
-		else next();
+		insert.then(data => res.locals.valid = true);
+		insert.catch(err => res.locals.valid = false);
+		insert.finally(() => next());
 	}
 	//
 	static catch(req, res, next) {

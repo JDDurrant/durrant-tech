@@ -2,9 +2,9 @@ import Joi from 'joi';
 
 import Model, { db } from './model';
 
-export const collection = db.get('users');
+const collection = db.get('users');
 
-export const schema = Joi.object().keys
+const schema = Joi.object().keys
 ({
 	fname: Joi.string().alphanum().max(20).required(),
 	sname: Joi.string().alphanum().max(20).required(),
