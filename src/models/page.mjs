@@ -1,14 +1,31 @@
-import Model from './model';
+import Joi from 'joi';
 
-const model = new Model('pages');
+import Model, { db } from './model';
 
-export default class Page {
+export const collection = db.get('pages');
 
-	constructor(page) {
-		this.title = page.title;
-		this.body = page.body;
-		this.summary = page.summary;
-		this.createdAt = page.createdAt;
-		this.updatedAt = page.updatedAt;
-	}
+export const schema = Joi.object().keys({
+	
+	title: Joi.string().required().max(50),
+	body: Joi.string().required(),
+	summary: Joi.string().max(200).required(),
+	createdAt: Joi.date(),
+	updatedAt: Joi.date()
+});
+// const model = new Model('pages');
+
+export default class PageModel extends Model {
+
+	// Are constructors necessary? I'll comment them out
+	// until I start using them.
+	// constructor(page) {
+
+	// 	this.data = {
+	// 		title: page.title,
+	// 		body: page.body,
+	// 		summary: page.summary,
+	// 		createdAt: page.createdAt,
+	// 		updatedAt: page.updatedAt
+	// 	}
+	// }
 }
