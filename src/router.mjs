@@ -1,14 +1,22 @@
 import express from 'express';
 
-import Home from './controllers/home';
-import User from './controllers/user';
-import Validate from './middleware/validate';
+import Controller from './controllers/controller';
+import HomeController from './controllers/home';
+import UserController from './controllers/user';
 
 const router = express.Router();
 
-router.get('/', Home);
-router.get('/add-user', User.form);
+// GET
+router.get('*', Controller.init);
 
-router.post('/add-user', User.save, User.catch);
+router.get('/', HomeController.static);
+router.get('/add-user', UserController.form);
+router.get('/users', UserController.list);
+
+router.get('*', Controller.render); // Referencing Controller.render only once is more convenient, but
+// this results in the method being called multiple times for each GET request.
+
+// POST
+router.post('/add-user', UserController.save, UserController.then, UserController.catch);
 
 export default router;

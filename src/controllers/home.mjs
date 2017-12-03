@@ -1,20 +1,34 @@
-import User from '../models/user';
+import Model from '../models/user';
 
-export default function HomeController(req, res, next) {
-	const query = User.find();
+export default {
 
-	query.then(data => {
+	static(req, res, next) {
+		// The query will be used to get a homepage from the database.
+		// const query = Model.find();
+		// const query = Model.find({ homepage: true }); // or something similar
+		// Perhaps I'll include a method in the Pages model for returning the homepage.
+	
+		// query.then(data => {
+	
+		// 	const page = res.locals.page;
+		// 	page.title = 'Jack Durrant';
+		// 	page.body = 'Hello, World!';
+		// 	page.theme = 'default';
+		// 	page.template = 'home/home';
+	
+		// 	next();
+		// });
 
-		res.locals.page = {
-			title: 'Jack Durrant',
-			body: 'Hello, World!',
-			theme: 'default'
-		};
+		const page = res.locals.page;
+		page.title = 'Jack Durrant';
+		page.body = 'Hello, World!';
+		page.theme = 'default';
+		page.template = 'home/home';
 
-		return res.render('index', {
-			page: res.locals.page,
-			site: req.app.locals.site,
-			template: 'home'
-		});
-	});
-}
+		next();
+	},
+
+	dynamic(req, res, next) {
+		// Placeholder method to consider displaying blog posts, etc.
+	}
+};

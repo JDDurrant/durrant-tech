@@ -3,11 +3,19 @@
 <head>
 	<meta charset="utf-8" />
 	<title><%= page.title %> - <%= site.title %></title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="/css/<%= page.theme %>.css" />
+	<link rel="stylesheet" type="text/css" href="/res/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/res/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/res/css/<%= page.theme %>.css" />
 </head>
 <body>
-	<%- include('modules/navigation/navigation', { site: site}) %>
-	<%- include(`modules/${template}/${template}`, { page: page}) %>
+	<div class="wrapper">
+		<%- include('modules/toolbar/top/toolbar-top') %>
+		<div class="main">
+			<%- include('modules/sidebar/left/sidebar-left') %>
+			<div class="page">
+				<%- include(`modules/${page.template}`) %>
+			</div>
+			<%- include('modules/sidebar/right/sidebar-right') %>
+	</div>
 </body>
 </html>
