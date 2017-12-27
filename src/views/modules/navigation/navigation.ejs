@@ -1,5 +1,5 @@
 <nav class="navigation">
 	<% site.navigation.forEach(link => { %>
-		<a href="<%= link.url %>" class="navigation-link"><%= link.text %></a>
+		<a href="<%= link.url %>" class="navigation-link <%= link.classes %>"><%= link.text %></a>
 	<% }) %>
 </nav>

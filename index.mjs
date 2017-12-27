@@ -1,3 +1,3 @@
-import 'dotenv/config';
+require('dotenv/config');
 
-import './src/app';
+require('./bin/server');

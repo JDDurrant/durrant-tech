@@ -1,11 +1,12 @@
-// import Template from '../middleware/templates/user';
-import Model from '../models/user';
+import * as express from 'express';
 
-export default {
+import UserModel from '../models/user';
+
+export default class UserController {
 	// GET
-	list(req, res, next) {
+	static list(req, res, next) {
 		//users
-		const query = Model.find();
+		const query = UserModel.find();
 
 		query.then(users => {
 			const page = res.locals.page;
@@ -22,13 +23,14 @@ export default {
 			console.log("Couldn't find user:", err);
 			res.send("Database error");
 		});
-	},
+	}
 
-	view(req, res, next) {
-		//user/:id
-	},
+	static view(req, res, next) {
+		//users/:user
+	}
 
-	form(req, res, next) {
+	static form(req, res, next) {
+		//users/add
 		const page = res.locals.page;
 		page.title = 'Add User';
 		page.body = 'Add a new user';
@@ -36,11 +38,11 @@ export default {
 		page.template = 'form/user/form-user';
 
 		next();
-	},
+	}
 	// POST
-	save(req, res, next) {
-		//add-user
-		const insert = Model.insert(req.body);
+	static save(req, res, next) {
+		//users/add
+		const insert = UserModel.insert(req.body);
 
 		insert.then((data) => {
 			res.locals.valid = true;
@@ -51,15 +53,15 @@ export default {
 			res.locals.valid = false;
 			next();
 		});
-	},
+	}
 	
-	then(req, res, next) {
+	static then(req, res, next) {
 		// Executed upon valid input
 		if(res.locals.valid) res.redirect('/users');
 		next();
-	},
+	}
 
-	catch(req, res, next) {
+	static catch(req, res, next) {
 		// Validation errors handled here
 		if(!res.locals.valid) res.send("Invalid input");
 		next();

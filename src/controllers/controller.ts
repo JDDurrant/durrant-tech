@@ -15,9 +15,6 @@ export default {
     render(req, res, next) {
         // Prevent execution of this method for static resources in public/
         if(!res.locals.resource) {
-            console.log("<Render>");
-            console.log(res.locals);
-            console.log("</Render>");
             res.render('index', res.locals);
         }
 
