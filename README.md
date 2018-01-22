@@ -2,5 +2,7 @@
 my personal website
 
 ```
-$ node --experimental-modules app.mjs
+$ [sudo] npm i -g typescript
+$ npm run build
+$ npm test
 ```
