@@ -1,5 +1,6 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+import * as less from 'less-middleware';
 
 import router from './router';
 
@@ -15,8 +16,13 @@ app.set('views', './src/views');
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(less('./src/views', {
+	cacheFile: './bin/less-cache.json',
+	debug: true,
+	dest: './public'
+}));
 
-router.use('/res', express.static('./src/public'));
+app.use(express.static('./public'));
 
 app.use(router);
 

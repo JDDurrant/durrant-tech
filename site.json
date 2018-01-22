@@ -1,6 +1,7 @@
 {
 	"title": "Durrant.tech",
 	"domain": "durrant.tech",
+	"host": "http://localhost:3000",
 
 	"navigation": [
 		{ "text": "About me",	"url": "/about" },

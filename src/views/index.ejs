@@ -4,19 +4,15 @@
 	<meta charset="utf-8" />
 	<title><%= page.title %> - <%= site.title %></title>
 	<link rel="icon" href="/res/favicon.ico" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,700i" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/res/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="/res/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="/res/css/<%= page.theme %>.css" />
 </head>
 <body>
-	<div class="wrapper">
-		<%- include('modules/toolbar/top/toolbar-top') %>
-		<div class="main">
-			<%- include('modules/sidebar/left/sidebar-left') %>
-			<div class="page">
-				<%- include(`modules/${page.template}`) %>
-			</div>
-			<%- include('modules/sidebar/right/sidebar-right') %>
+	<div class="screen">
+		<%- include('containers/parts/top/top') %>
+		<%- include('containers/parts/main/main') %>
+		<%- include('containers/parts/bottom/bottom') %>
 	</div>
 </body>
 </html>
