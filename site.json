@@ -3,6 +3,12 @@
 	"domain": "durrant.tech",
 	"host": "http://localhost:3000",
 
+	"contact": {
+		"email": "Jack@Durrant.tech",
+		"landline": "00",
+		"mobile": "00"
+	},
+
 	"navigation": [
 		{ "text": "About me",	"url": "/about" },
 		{ "text": "Employment",	"url": "/about/employment" },

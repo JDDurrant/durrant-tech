@@ -1,7 +1,9 @@
 .navigation {
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
     overflow-y: auto;
+    padding: 0 16px;
 
     &-link {
         display: block;
@@ -9,7 +11,7 @@
         padding-left: 8px;
 
         color: #000000;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 300;
         text-decoration: none;
         transition: padding-left 0.3s, color 0.3s;
@@ -26,10 +28,15 @@
 
     &-section {
         padding-left: 0;
+        font-size: 20px;
         font-weight: 400;
 
         &:hover {
             padding-left: 8px;
         }
+    }
+
+    &-current {
+        color: #004488;
     }
 }

@@ -1,0 +1,40 @@
+.form-search {
+    width: inherit;
+    height: inherit;
+
+    &-query {
+        width: inherit;
+        height: inherit;
+        box-sizing: border-box;
+        padding: 6px 64px 6px 32px; // up right down left
+
+        background: transparent;
+        border: none;
+        font-family: Roboto, sans-serif;
+        font-size: 17px;
+        font-weight: 300;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    &-submit {
+        width: 32px;
+        height: 32px;
+        top: 0;
+        right: 32px;
+        position: absolute;
+        z-index: 5;
+
+        background: transparent;
+        border: none;
+        // color: #c0c0c0;
+        color: #808080;
+        font-size: 18px;
+
+        &-label {
+            display: none;
+        }
+    }
+}

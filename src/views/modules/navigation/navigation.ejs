@@ -1,5 +1,5 @@
 <nav class="navigation">
-	<a href="#" class="navigation-link navigation-section">Sample Section Link</a>
+	<a href="#" class="navigation-link navigation-section navigation-current">Sample Section Link</a>
 	<% site.navigation.forEach(link => { %>
 		<a href="<%= link.url %>" class="navigation-link <%= link.classes %>"><%= link.text %></a>
 	<% }) %>
