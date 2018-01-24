@@ -23,7 +23,8 @@ export default {
 		page.title = 'Jack Durrant';
 		page.body = 'Hello, World!';
 		page.theme = 'default';
-		page.template = 'home/home';
+		page.content = 'home/home';
+		page.sidebar = 'empty/empty';
 
 		next();
 	},
