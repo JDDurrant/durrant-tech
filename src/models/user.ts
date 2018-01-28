@@ -1,15 +1,29 @@
 import * as Joi from 'joi';
+import { Schema } from 'mongoose';
 import { ICollection } from 'monk';
 
 import Model from './model';
 
+class User {
+	name: string;
+	email: string;
+}
+
 export default class UserModel {
-	
-	static schema: Joi.schema = Joi.object().keys({
-		fname: Joi.string().alphanum().max(20).required(),
-		sname: Joi.string().alphanum().max(20).required(),
-		email: Joi.string().email().required()
+
+	static schema: Schema = new Schema({
+		name: String,
+		email: {
+			type: String,
+			required: [true, 'Missing field: email']
+		}
 	});
+	
+	// static schema: Joi.schema = Joi.object().keys({
+	// 	fname: Joi.string().alphanum().max(20).required(),
+	// 	sname: Joi.string().alphanum().max(20).required(),
+	// 	email: Joi.string().email().required()
+	// });
 
 	static collection: ICollection = Model.db.get('users');
 

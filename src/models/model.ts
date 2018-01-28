@@ -1,16 +1,18 @@
 import * as Joi from 'joi';
+import * as mongoose from 'mongoose';
 import monk, { TQuery } from 'monk';
 
 export default class Model {
 
     static db = monk('localhost:27017/durrant-tech');
+    static mongoose = mongoose.createConnection('mongodb://localhost:27017/durrant-tech');
 
     static find(model, object?: object) {
         object = object || {};
 		return model.collection.find(object);
     }
     
-    static findById(model, id) {
+    static findById(model, id: String) {
         return model.collection.findOne({ _id: id });
     }
     

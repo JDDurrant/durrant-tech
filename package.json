@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/JDDurrant/durrant-tech#readme",
   "dependencies": {
+    "@types/mongoose": "^5.0.0",
     "body-parser": "^1.18.2",
     "class-validator": "^0.7.3",
     "dotenv": "^4.0.0",
@@ -33,6 +34,7 @@
     "joi": "^13.0.2",
     "less-middleware": "^2.2.1",
     "marked": "^0.3.6",
+    "mongoose": "^5.0.1",
     "monk": "^6.0.5",
     "prompt": "^1.0.0"
   },
