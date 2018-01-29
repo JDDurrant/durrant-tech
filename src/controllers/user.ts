@@ -1,12 +1,12 @@
 import * as express from 'express';
 
-import UserModel from '../models/user';
+import User from '../models/user';
 
 export default class UserController {
 	// GET
 	static list(req, res, next) {
 		//users
-		const query = UserModel.find();
+		const query = User.find();
 
 		query.then(users => {
 			const page = res.locals.page;
@@ -42,7 +42,7 @@ export default class UserController {
 	// POST
 	static save(req, res, next) {
 		//users/add
-		const insert = UserModel.insert(req.body);
+		const insert = User.insert(req.body);
 
 		insert.then((data) => {
 			res.locals.valid = true;
