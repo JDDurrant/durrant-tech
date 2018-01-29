@@ -5,6 +5,8 @@ export default class Model {
 
     static db = monk('localhost:27017/durrant-tech');
 
+    static schema: Joi.schema = Joi.object();
+
     static find(model, object?: object) {
         object = object || {};
 		return model.collection.find(object);
@@ -26,5 +28,9 @@ export default class Model {
     
     static remove(model, id) {
         return model.collection.remove({ _id: id });
+    }
+
+    validate(): Joi.validate {
+        return Joi.validate(this, Model.schema);
     }
 }
