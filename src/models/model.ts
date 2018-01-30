@@ -11,8 +11,14 @@ export default abstract class Model {
         Object.assign(this, data);
     }
 
+    static find(data?): Promise<Model[]> {
+    
+        return this.collection.find(data || {});
+    }
+
     save() {
         // Validate object
+        this.validate();
         // Check if object is already in database (Check for _id attribute)
         // If so, update existing document
         // Otherwise, save to a new object and assign _id attribute to this object
@@ -22,14 +28,14 @@ export default abstract class Model {
         return Joi.validate(this, this.constructor.prototype.schema);
     }
 
-    static find(model, object?: object) {
-        object = object || {};
-		return model.collection.find(object);
-    }
+    // static find(model, object?: object) {
+    //     object = object || {};
+	// 	return model.collection.find(object);
+    // }
     
-    static findById(model, id) {
-        return model.collection.findOne({ _id: id });
-    }
+    // static findById(model, id) {
+    //     return model.collection.findOne({ _id: id });
+    // }
     
     static insert(model, obj): Joi.validate {
         

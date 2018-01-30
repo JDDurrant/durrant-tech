@@ -3,7 +3,7 @@ import monk, { ICollection, TQuery } from 'monk';
 
 import Model from './model';
 
-export default class PageModel extends Model {
+export default class Page extends Model {
 
 	static schema: Joi.schema = Joi.object().keys({
 		title: Joi.string().required().max(50),
@@ -15,18 +15,18 @@ export default class PageModel extends Model {
 
 	static collection: ICollection = Model.db.get('pages');
 
-	static find(object): TQuery {
-		return Model.find(PageModel, object);
-	}
+	// static find(object): TQuery {
+	// 	return Model.find(PageModel, object);
+	// }
 
-	static findOne(id): TQuery {
-		return Model.findById(PageModel, { _id: id });
-	}
+	// static findOne(id): TQuery {
+	// 	return Model.findById(PageModel, { _id: id });
+	// }
 
-	static findHome(): TQuery {
-		// Not yet finalised
-		return Model.findById(PageModel, { homepage: true })
-	}
+	// static findHome(): TQuery {
+	// 	// Not yet finalised
+	// 	return Model.findById(PageModel, { homepage: true })
+	// }
 	
 	static insert(object): TQuery {
 		
@@ -34,7 +34,7 @@ export default class PageModel extends Model {
 			object.createdAt = new Date();
 		}
 
-		return Model.find(PageModel, object);
+		return Page.find(object);
 	}
 
 	static update(id, object): TQuery {
@@ -43,10 +43,10 @@ export default class PageModel extends Model {
 			object.updatedAt = new Date();
 		}
 
-		return Model.update(PageModel, id, object);
+		return Model.update(Page, id, object);
 	}
 
 	static remove(id): TQuery {
-		return Model.remove(PageModel, id);
+		return Model.remove(Page, id);
 	}
 }

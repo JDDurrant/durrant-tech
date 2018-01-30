@@ -1,8 +1,8 @@
 import * as express from 'express';
 
 import Controller from './controllers/controller';
-import HomeController from './controllers/home';
-import UserController from './controllers/user';
+import HomeController from './controllers/home.controller';
+import UserController from './controllers/user.controller';
 
 const router: express.Router = express.Router();
 

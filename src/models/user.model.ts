@@ -3,7 +3,7 @@ import { ICollection } from 'monk';
 
 import Model from './model';
 
-export default class User {
+export default class User extends Model {
 	
 	static schema: Joi.schema = Joi.object().keys({
 		fname: Joi.string().alphanum().max(20).required(),
@@ -13,16 +13,16 @@ export default class User {
 
 	static collection: ICollection = Model.db.get('users');
 
-	static find(object?: object) {
-		return Model.find(User, object || {});
-	}
+	// static find(data?) {
+	// 	return Model.find(User.collection, data || {});
+	// }
 
 	static findByEmail(email: string) {
 		return User.find({ email: email });
 	}
 	
-	static insert(object: object) {
+	static insert(data) {
 
-		return Model.insert(User, object)
+		return Model.insert(User, data)
 	}
 }

@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-import User from '../models/user';
+import User from '../models/user.model';
 
 export default class UserController {
 	// GET
@@ -14,7 +14,8 @@ export default class UserController {
 			page.body = 'User list';
 			page.users = users;
 			page.theme = 'default';
-			page.template = 'user/list/user-list';
+			page.content = 'user/list/user-list';
+			page.sidebar = 'empty/empty';
 
 			next();
 		});
