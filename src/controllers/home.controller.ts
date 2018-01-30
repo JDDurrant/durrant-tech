@@ -1,4 +1,4 @@
-import Model from '../models/user.model';
+import Page from '../models/page.model';
 
 export default {
 

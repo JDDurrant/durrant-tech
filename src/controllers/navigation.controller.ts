@@ -1,4 +1,6 @@
-export default class Navigation {
+import Controller from './controller';
+
+export default class NavigationController extends Controller {
 
     static render(req, res, next) {
 

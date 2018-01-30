@@ -1,8 +1,12 @@
 import * as express from 'express';
 
+import Controller from './controller';
 import User from '../models/user.model';
 
-export default class UserController {
+export default class UserController extends Controller {
+
+	static model = User;
+
 	// GET
 	static list(req, res, next) {
 		//users

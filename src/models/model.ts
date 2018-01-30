@@ -1,7 +1,7 @@
 import * as Joi from 'joi';
 import monk, { TQuery, ICollection } from 'monk';
 
-export default abstract class Model {
+export default class Model {
 
     static db = monk('localhost:27017/durrant-tech');
     static schema: Joi.schema = Joi.object();
