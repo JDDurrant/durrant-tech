@@ -1,8 +1,9 @@
 import Page from '../models/page.model';
+import Controller from './controller';
 
-export default {
+export default class PageController extends Controller {
 
-	static(req, res, next) {
+	static homepage(req, res, next) {
 		// The query will be used to get a homepage from the database.
 		// const query = Model.find();
 		// const query = Model.find({ homepage: true }); // or something similar
@@ -27,9 +28,5 @@ export default {
 		page.sidebar = 'empty/empty';
 
 		next();
-	},
-
-	dynamic(req, res, next) {
-		// Placeholder method to consider displaying blog posts, etc.
 	}
-};
+}

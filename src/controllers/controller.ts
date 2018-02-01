@@ -1,16 +1,11 @@
 import Model from '../models/model'
 
-export default class Controller {
+export default /* abstract */ class Controller {
 
     static model = Model;
-
-    // Insert data into the collection belonging to the derivative controller's model
-    static insert(req, res, next) {
-        
-        const data = new this.model(req.body);
-        data.save();
-    }
     
+    // Methods for handling requests
+    //
     // Supply data to a request to initialise it
     static init(req, res, next) {
         // Allow controllers to check if URL points to static resource
@@ -32,5 +27,15 @@ export default class Controller {
         }
 
         next();
+    }
+
+    // Methods  for use by other controllers
+    //
+    // Insert data into the collection belonging to the derivative controller's model
+    // Consider moving this method to the base model class; that's probably a more logical place to keep it.
+    static insert(req, res, next) {
+        
+        const data = new this.model(req.body);
+        data.save();
     }
 }

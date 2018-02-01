@@ -9,7 +9,7 @@ export default class UserController extends Controller {
 
 	// GET
 	static list(req, res, next) {
-		//users
+		//GET	/users
 		const query = User.find();
 
 		query.then(users => {
@@ -31,11 +31,11 @@ export default class UserController extends Controller {
 	}
 
 	static view(req, res, next) {
-		//users/:user
+		//GET	/users/:user
 	}
 
 	static form(req, res, next) {
-		//users/add
+		//GET	/users/add
 		const page = res.locals.page;
 		page.title = 'Add User';
 		page.body = 'Add a new user';
@@ -45,20 +45,36 @@ export default class UserController extends Controller {
 		next();
 	}
 	// POST
+
 	static save(req, res, next) {
-		//users/add
-		const insert = User.insert(req.body);
+		//POST /users/add
+		// console.log("Posted:", req.body); // Works
 
-		insert.then((data) => {
-			res.locals.valid = true;
+		try {
+			User.insert(req.body);
+			res.redirect('/users');
 			next();
-		});
-
-		insert.catch(err => {
-			res.locals.valid = false;
-			next();
-		});
+		}
+		catch(e) {
+			// console.log("Validation error:", e);
+			res.send(e);
+		}
 	}
+
+	// static save(req, res, next) {
+	// 	//POST	/users/add
+	// 	const insert = User.insert(req.body);
+
+	// 	insert.then((data) => {
+	// 		res.locals.valid = true;
+	// 		next();
+	// 	});
+
+	// 	insert.catch(err => {
+	// 		res.locals.valid = false;
+	// 		next();
+	// 	});
+	// }
 	
 	static then(req, res, next) {
 		// Executed upon valid input
