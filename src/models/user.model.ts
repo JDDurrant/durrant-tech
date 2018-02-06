@@ -5,11 +5,12 @@ import Model from './model';
 
 export default class User extends Model {
 	
-	schema: Joi.schema = Joi.object().keys({
+	static schema: Joi.schema = Joi.object().keys({
 		fname: Joi.string().alphanum().max(20).required(),
 		sname: Joi.string().alphanum().max(20).required(),
 		email: Joi.string().email().required()
 	});
+	schema: Joi.schema = User.schema;
 
 	// To replace the schema above
 	//
@@ -27,13 +28,6 @@ export default class User extends Model {
 	static findByEmail(email: string) {
 		return User.find({ email: email });
 	}
-	
-	// To be replaced with save() method in base Model class
-	//
-	// static insert(data) {
-
-	// 	return Model.insert(User, data)
-	// }
 
 	// To be replaced with find(data?) method in base Model class
 	//

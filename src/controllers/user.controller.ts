@@ -48,33 +48,15 @@ export default class UserController extends Controller {
 
 	static save(req, res, next) {
 		//POST /users/add
-		// console.log("Posted:", req.body); // Works
-
 		try {
-			User.insert(req.body);
-			res.redirect('/users');
-			next();
+			User.insert(req.body); // Consider calling next() from callback
+			res.locals.valid = true;
 		}
 		catch(e) {
-			// console.log("Validation error:", e);
-			res.send(e);
+			res.locals.valid = false;
 		}
+		next();
 	}
-
-	// static save(req, res, next) {
-	// 	//POST	/users/add
-	// 	const insert = User.insert(req.body);
-
-	// 	insert.then((data) => {
-	// 		res.locals.valid = true;
-	// 		next();
-	// 	});
-
-	// 	insert.catch(err => {
-	// 		res.locals.valid = false;
-	// 		next();
-	// 	});
-	// }
 	
 	static then(req, res, next) {
 		// Executed upon valid input

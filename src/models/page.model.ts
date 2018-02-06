@@ -37,16 +37,16 @@ export default class Page extends Model {
 		return Page.find(object);
 	}
 
-	static update(id, object): TQuery {
+	// static update(id, object): TQuery {
 
-		if(!object.hasOwnProperty('updatedAt')) {
-			object.updatedAt = new Date();
-		}
+	// 	if(!object.hasOwnProperty('updatedAt')) {
+	// 		object.updatedAt = new Date();
+	// 	}
 
-		return Model.update(Page, id, object);
-	}
+	// 	return Model.update(Page, id, object);
+	// }
 
-	static remove(id): TQuery {
-		return Model.remove(Page, id);
-	}
+	// static remove(id): TQuery {
+	// 	return Model.remove(Page, id);
+	// }
 }

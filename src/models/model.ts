@@ -5,8 +5,9 @@ export default /* abstract */ class Model {
 
     static db = monk('localhost:27017/durrant-tech');
     static collection: ICollection;
-    schema: Joi.schema = Joi.object();
+    static schema: Joi.schema = Joi.object();
     collection: ICollection = Model.collection;
+    schema: Joi.schema = Model.schema;
 
     data: object = {};
 
@@ -18,16 +19,24 @@ export default /* abstract */ class Model {
          * Otherwise, assign values directly to this:
          * Object.assign(this, data);
          */
-        Object.assign(this.data, data); // Consider replacing with: this.data = data;
+
+        Object.assign(this.data, data);
+        // Consider replacing with: this.data = data;
     }
 
-    static /* async */ find(data?): Promise<Model[]> {
+    static /* async */ find(data = {}): Promise<Model[]> {
+        return this.collection.find(data);
+    }
 
-        return this.collection.find(data || {});
+    static /* async */ findOne(data): Promise<Model> {
+        return this.collection.findOne(data);
+    }
+
+    static /* async */ findById(_id): Promise<Model> {
+        return this.findOne({ _id });
     }
 
     static /* async */ insert(data: object) {
-
         // console.log("Data:", data); // Works
         // console.log("Class:", this);
         // console.log("Constructor:", this.constructor);
@@ -45,14 +54,9 @@ export default /* abstract */ class Model {
     }
 
     /* async */ save(): TQuery {
-        // console.log("Object:", this);
-
         // Validate object
-        const valid = this.validate();
+        const { error, value } = this.validate();
         // console.log(valid);
-
-        const error = valid.error;
-        const value = valid.value;
 
         // console.log("Validation object:", valid);
 
@@ -78,38 +82,33 @@ export default /* abstract */ class Model {
          * This instance method is intended for use with derivatives of this
          * class. I want it to have access to static field variables
          * within derivative classes, including static schema: Joi.schema.
+         * 
+         * I could also store the collection and schema for each model as 
+         * instance variables, I would have to do this for each model class.
+         * This involves code repetition, which I'd like to avoid.
          */
+
         // console.log("Collection:", this.collection);
         // console.log("Schema:", this.schema);  // undefined
-        // console.log("Prototype:", this.constructor.prototype);      // User {}
-        // console.log("Constructor:", this.constructor);              // class User extends Model { ... }
-        // console.log("This:", this);                                 // User { data: { ... } }
+        // console.log("Prototype:", this.constructor.prototype);
+        // User {}
+        // console.log("Constructor:", this.constructor);
+        // class User extends Model { ... }
+        // console.log("This:", this);
+        // User { data: { ... } }
 
-        return Joi.validate(this.data, this.schema);
+        // return Joi.validate(this.data, this.schema);
+        return Joi.validate(this.data, this.constructor.schema);
     }
-
-    // static find(model, object?: object) {
-    //     object = object || {};
-	// 	return model.collection.find(object);
-    // }
-    
-    // static findById(model, id) {
-    //     return model.collection.findOne({ _id: id });
-    // }
     
     // Rewrite using object-oriented programming principles
-    // static insert(model, obj): Joi.validate {
-        
-    //     const validate: Joi.validate = Joi.validate(obj, model.schema);
-    //     return validate.then(data => model.collection.insert(obj));
+    //    
+    // static remove(model, id) {
+    //     return model.collection.remove({ _id: id });
     // }
-    
-    static remove(model, id) {
-        return model.collection.remove({ _id: id });
-    }
 
     // Ensure that all references to this method are deleted, then delete the method
-    static update(model, id, object) {
-        return model.collection.update({ _id: id }, object);
-    }
+    // static update(model, id, object) {
+    //     return model.collection.update({ _id: id }, object);
+    // }
 }

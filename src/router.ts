@@ -15,6 +15,6 @@ router.get('/users/add', UserController.form, Controller.render);
 router.get('/users/:user', UserController.view, Controller.render);
 
 // POST
-router.post('/users/add', UserController.save /*, UserController.then, UserController.catch */);
+router.post('/users/add', UserController.save, UserController.then, UserController.catch);
 
 export default router;
