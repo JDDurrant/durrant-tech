@@ -12,13 +12,11 @@ export default /* abstract */ class Model {
     data: object = {};
 
     constructor(data) {
-        /**
-         * Consider replacing the line below this block with:
-         * this.data = data;
-         * 
-         * Otherwise, assign values directly to this:
-         * Object.assign(this, data);
-         */
+        /** Consider replacing the line below this block with:
+         *  this.data = data;
+         *  
+         *  Otherwise, assign values directly to this:
+         *  Object.assign(this, data); */
 
         Object.assign(this.data, data);
         // Consider replacing with: this.data = data;
@@ -37,10 +35,6 @@ export default /* abstract */ class Model {
     }
 
     static /* async */ insert(data: object) {
-        // console.log("Data:", data); // Works
-        // console.log("Class:", this);
-        // console.log("Constructor:", this.constructor);
-        // console.log("Schema:", this.schema);
 
         const object = new this(data);
 
@@ -56,16 +50,22 @@ export default /* abstract */ class Model {
     /* async */ save(): TQuery {
         // Validate object
         const { error, value } = this.validate();
-        // console.log(valid);
 
-        // console.log("Validation object:", valid);
+        if(error != null) throw error;
 
-        if(error == null) {
-            // Modify to determine whether to update an existing document or create a new one
-            return this.collection.insert(value);
-        } else {
-            throw error;
+        if('_id' in this.data) {
+            return this.constructor.collection.findOneAndUpdate({ _id: this.data._id }, this.data);
         }
+        else {
+            return this.constructor.collection.insert(this.data);
+        }
+
+        // if(error == null) {
+        //     // Modify to determine whether to update an existing document or create a new one
+        //     return this.collection.insert(value);
+        // } else {
+        //     throw error;
+        // }
 
         // // Check if object is already in database (Check for _id attribute)
         // if('_id' in this.data) {
@@ -78,24 +78,13 @@ export default /* abstract */ class Model {
     }
 
     validate(): Joi.validate {
-        /**
-         * This instance method is intended for use with derivatives of this
-         * class. I want it to have access to static field variables
-         * within derivative classes, including static schema: Joi.schema.
+        /** This instance method is intended for use with derivatives of this
+         *  class. I want it to have access to static field variables
+         *  within derivative classes, including static schema: Joi.schema.
          * 
-         * I could also store the collection and schema for each model as 
-         * instance variables, I would have to do this for each model class.
-         * This involves code repetition, which I'd like to avoid.
-         */
-
-        // console.log("Collection:", this.collection);
-        // console.log("Schema:", this.schema);  // undefined
-        // console.log("Prototype:", this.constructor.prototype);
-        // User {}
-        // console.log("Constructor:", this.constructor);
-        // class User extends Model { ... }
-        // console.log("This:", this);
-        // User { data: { ... } }
+         *  I could also store the collection and schema for each model as 
+         *  instance variables, I would have to do this for each model class.
+         *  This involves code repetition, which I'd like to avoid. */
 
         // return Joi.validate(this.data, this.schema);
         return Joi.validate(this.data, this.constructor.schema);

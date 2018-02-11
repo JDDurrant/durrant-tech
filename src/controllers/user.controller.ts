@@ -7,7 +7,6 @@ export default class UserController extends Controller {
 
 	static model = User;
 
-	// GET
 	static list(req, res, next) {
 		//GET	/users
 		const query = User.find();
@@ -44,7 +43,6 @@ export default class UserController extends Controller {
 
 		next();
 	}
-	// POST
 
 	static save(req, res, next) {
 		//POST /users/add
