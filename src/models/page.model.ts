@@ -9,6 +9,7 @@ export default class Page extends Model {
 		title: Joi.string().required().max(50),
 		body: Joi.string().required(),
 		summary: Joi.string().max(200).required(),
+		slug: Joi.string().max(200).required(),
 		createdAt: Joi.date().required(),
 		updatedAt: Joi.date()
 	});
@@ -27,6 +28,10 @@ export default class Page extends Model {
 	// 	// Not yet finalised
 	// 	return Model.findById(PageModel, { homepage: true })
 	// }
+
+	static findBySlug(slug: string) {
+		return Page.findOne({ slug: slug });
+	}
 	
 	static insert(object): TQuery {
 		

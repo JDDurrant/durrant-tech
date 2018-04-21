@@ -26,7 +26,7 @@ export default class User extends Model {
 	collection: ICollection = User.collection;
 
 	static findByEmail(email: string) {
-		return User.find({ email: email });
+		return User.findOne({ email: email });
 	}
 
 	// To be replaced with find(data?) method in base Model class

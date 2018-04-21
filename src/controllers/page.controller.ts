@@ -4,6 +4,11 @@ import Controller from './controller';
 export default class PageController extends Controller {
 
 	static homepage(req, res, next) {
+		/**
+		 * Since the homepage isn't necessarily static, perhaps I should
+		 * move it to class Controller
+		 */
+
 		// The query will be used to get a homepage from the database.
 		// const query = Model.find();
 		// const query = Model.find({ homepage: true }); // or something similar
@@ -28,5 +33,19 @@ export default class PageController extends Controller {
 		page.sidebar = 'empty/empty';
 
 		next();
+	}
+
+	static read(req, res, next) {
+		//GET	/:page
+		const query = Page.findBySlug(req.params.slug);
+
+		query.then(data => {
+			const page = res.locals.page;
+
+			Object.assign(page, data);
+			page.content = 'home/home';
+			page.sidebar = 'empty/empty';
+			next();
+		});
 	}
 }
