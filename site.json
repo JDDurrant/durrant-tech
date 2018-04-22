@@ -1,12 +1,13 @@
 {
 	"title": "Durrant.tech",
 	"domain": "durrant.tech",
-	"host": "http://localhost:3000",
+	"www": "http://localhost:3000",
+	"api": "http://localhost:3001",
 
 	"contact": {
 		"email": "Jack@Durrant.tech",
-		"landline": "00",
-		"mobile": "00"
+		"landline": "00000000000",
+		"mobile": "00000000000"
 	},
 
 	"navigation": [
