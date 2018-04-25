@@ -12,10 +12,12 @@ export default class API {
 	 * - sessionCheck
 	 */
 
+	// ALL
 	static respond(req: Request, res: Response, next?: NextFunction) {
 		res.json(res.locals);
 	}
 
+	// GET
 	static test(req: Request, res: Response, next?: NextFunction) {		
 		res.json({
 			title: 'test'

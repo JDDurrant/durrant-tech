@@ -5,15 +5,17 @@ import monk, { ICollection, TQuery } from 'monk';
 import Model from './model';
 
 export default class ArticleModel extends Model {
-	// Should this class extend PageModel?
+	/**
+	 * Should this class extend PageModel?
+	 * -> Write all the required methods for PageModel. If they all have a place within
+	 *    this class, set it up to extend PageModel.
+	 */
+
 	static collection = Model.db.get('blog');
 
 	static schema = Joi.object().keys({
 		title: Joi.string().max(50).required(),
-		body: Joi.object().keys({
-			html: Joi.string().required(),
-			md: Joi.string().required()
-		}),
+		body: Joi.string().required(),
 		meta: Joi.object().keys({
 			summary: Joi.string().max(200).required(),
 			category: Joi.array().items(Joi.string()).required(),

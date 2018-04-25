@@ -1,3 +1,4 @@
+import { Request, Response, NextFunction } from 'express';
 import * as Joi from 'joi';
 import monk, { ICollection, TQuery } from 'monk';
 
@@ -9,15 +10,15 @@ export default class PageModel extends Model {
 
 	static schema = Joi.object().keys({
 		title: Joi.string().max(50).required(),
-		body: Joi.object().keys({
-			html: Joi.string().required(),
-			md: Joi.string().required()
-		}),
-		summary: Joi.string().max(200).required(),
-		slug: Joi.string().max(50).required(),
-		date: Joi.object().keys({
-			created: Joi.date().required(),
-			updated: Joi.date()
+		body: Joi.string().required(),
+		meta: Joi.object().keys({
+			summary: Joi.string().max(200).required(),
+			// tags: Joi.array().items(Joi.string), // Do pages need tags?
+			date: Joi.object().keys({
+				created: Joi.date().required(),
+				updated: Joi.date()
+			}),
+			slug: Joi.string().max(50).required()
 		})
 	});
 
@@ -25,4 +26,10 @@ export default class PageModel extends Model {
 	 * Methods to implement:
 	 * - populateData: Assign default values to properties like date.created
 	 */
+
+	// POST
+	static populateData(req: Request, res: Response, next: NextFunction) {
+		const date = req.body.meta.date.created;
+		req.body.meta.date.created = date || new Date();
+	}
 }
