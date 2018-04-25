@@ -1,0 +1,27 @@
+<div class="user-list">
+	<table class="user-list-table">
+		<thead class="user-list-table-head">
+			<tr class="user-list-table-head-user">
+				<th class="user-list-table-head-user-fname">First name</th>
+				<th class="user-list-head-table-user-sname">Surname</th>
+				<th class="user-list=head-user-table-email">Email address</th>
+			</tr>
+		</thead>
+		<tbody class="user-list-table-body">
+			<% page.users.forEach(user => { %>
+				<tr class="users-list-table-body-user">
+					<td class="users-list-table-body-user-fname">
+						<%= user.fname %>
+					</td>
+					<td class="users-list-table-body-user-sname">
+						<%= user.sname %>
+					</td>
+					<td class="users-list-table-body-user-email">
+						<%= user.email %>
+					</td>
+				</tr>
+			<% }) %>
+		</tbody>
+	</table>
+	<%- include('../../form/user/form-user') %>
+</div>

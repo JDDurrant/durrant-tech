@@ -1,0 +1,41 @@
+{
+	"name": "durrant-tech-api",
+	"version": "0.1.0",
+	"description": "my personal website",
+	"main": "bin/server.js",
+	"scripts": {
+		"start": "node bin/server.js",
+		"test": "nodemon bin/server.js",
+		"api": "node bin/server.js",
+		"www": "node apps/www/bin/server.js",
+		"build": "tsc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/JDDurrant/durrant-tech.git"
+	},
+	"keywords": [
+		"express",
+		"typescript"
+	],
+	"author": "Jack Durrant",
+	"license": "GPL-2.0",
+	"bugs": {
+		"url": "https://github.com/JDDurrant/durrant-tech/issues"
+	},
+	"homepage": "https://github.com/JDDurrant/durrant-tech#readme",
+	"dependencies": {
+		"body-parser": "^1.18.2",
+		"express": "^4.16.3",
+		"joi": "^13.2.0",
+		"marked": "^0.3.12",
+		"monk": "^6.0.5"
+	},
+	"devDependencies": {
+		"@types/express": "^4.11.1",
+		"@types/joi": "^13.0.7",
+		"@types/morgan": "^1.7.35",
+		"morgan": "^1.9.0",
+		"typescript": "^2.8.3"
+	}
+}
