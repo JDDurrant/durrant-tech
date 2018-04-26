@@ -2,7 +2,7 @@
 my personal website
 
 ```
-$ [sudo] npm i -g typescript
+$ npx yarn install
 $ npm run build
-$ npm test
+$ npm start
 ```
