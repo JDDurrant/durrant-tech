@@ -22,13 +22,8 @@ export default class PageModel extends Model {
 		})
 	});
 
-	/**
-	 * Methods to implement:
-	 * - populateData: Assign default values to properties like date.created
-	 */
-
 	// POST
-	static populateData(req: Request, res: Response, next: NextFunction) {
+	static generateDate(req: Request, res: Response, next?: NextFunction) {
 		const date = req.body.meta.date.created;
 		req.body.meta.date.created = date || new Date();
 	}
