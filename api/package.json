@@ -25,19 +25,19 @@
 	},
 	"homepage": "https://github.com/JDDurrant/durrant-tech#readme",
 	"dependencies": {
-		"body-parser": "^1.18.2",
+		"body-parser": "^1.18.3",
 		"express": "^4.16.3",
 		"fs-extra": "^6.0.1",
-		"joi": "^13.2.0",
+		"joi": "^13.6.0",
 		"marked": "^0.3.12",
-		"monk": "^6.0.5"
+		"monk": "^6.0.6"
 	},
 	"devDependencies": {
-		"@types/express": "^4.11.1",
-		"@types/fs-extra": "^5.0.2",
-		"@types/joi": "^13.0.7",
+		"@types/express": "^4.16.0",
+		"@types/fs-extra": "^5.0.4",
+		"@types/joi": "^13.4.3",
 		"@types/morgan": "^1.7.35",
 		"morgan": "^1.9.0",
-		"typescript": "^2.8.3"
+		"typescript": "^2.9.2"
 	}
 }
