@@ -29,8 +29,8 @@
     "dotenv": "^5.0.1"
   },
   "devDependencies": {
-    "typescript": "^2.8.3",
-    "yarn": "^1.6.0"
+    "typescript": "^2.9.2",
+    "yarn": "^1.9.4"
   },
   "private": true,
   "workspaces": [
