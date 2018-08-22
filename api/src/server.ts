@@ -10,7 +10,7 @@ const api = express();
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: true }));
 
-if(process.env.ENVIRONMENT == 'development')
+if(process.env.NODE_ENV == 'development')
 	api.use(logger(':method :url :status :res[content-length] - :response-time ms'));
 
 api.use(express.static(__dirname + '/../../public'));
