@@ -27,16 +27,21 @@ export default class UserModel extends Model {
 		})
 	});
 
+	// GET
 	static findByEmail(req: Request, res: Response, next?: NextFunction) {
 		res.locals.query = this.collection.findOne({
 			email: req.params.email // This might be updated, depending on where the email address gets stored
 		});
+
+		next();
 	}
 
 	static findByUsername(req: Request, res: Response, next?: NextFunction) {
 		res.locals.query = this.collection.findOne({
 			slug: req.params.username // This might be updated, depending on where the username gets stored
 		});
+
+		next();
 	}
 
 	/**

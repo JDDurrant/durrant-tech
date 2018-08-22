@@ -16,15 +16,13 @@ www.all('*', (req, res, next) => {
     
     console.log('Request URL:', api + req.path);
 
-    const request = axios.request({
+    axios.request({
         url: api + req.path,
         data: req.body,
         headers: req.headers
-    });
-
-    request.then(response => res.render('app.js', response.data));
-
-    request.catch(error => res.render('app.js', { title: 'Server error' }));
+    })
+    .then(response => res.render('app.js', response.data))
+    .catch(error => res.render('app.js', { title: 'Server error' }));
 });
 
 const host: string = process.env.WWW_URL || '127.0.0.1';

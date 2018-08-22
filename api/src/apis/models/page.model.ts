@@ -26,5 +26,6 @@ export default class PageModel extends Model {
 	static generateDate(req: Request, res: Response, next?: NextFunction) {
 		const date = req.body.meta.date.created;
 		req.body.meta.date.created = date || new Date();
+		next();
 	}
 }

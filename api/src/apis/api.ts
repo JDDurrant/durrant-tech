@@ -12,15 +12,21 @@ export default class API {
 	 * - sessionCheck
 	 */
 
-	// ALL
-	static respond(req: Request, res: Response, next?: NextFunction) {
-		res.json(res.locals);
-	}
-
 	// GET
 	static test(req: Request, res: Response, next?: NextFunction) {		
-		res.json({
+		res.locals.data = {
 			title: 'test'
-		});
+		};
+
+		next();
+	}
+
+	// ALL
+	static site(req: Request, res: Response, next?: NextFunction) {
+		res.json(res.locals.site);
+	}
+
+	static page(req: Request, res: Response, next?: NextFunction) {
+		res.json(res.locals.data);
 	}
 }

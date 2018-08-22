@@ -37,9 +37,10 @@ export default class ArticleModel extends PageModel {
 		}))
 	});
 
+	// GET
 	static list(req: Request, res: Response, next?: NextFunction) {
-
 		res.locals.query = this.collection.find({});
+		next();
 	}
 
 	static listByCategory(req: Request, res: Response, next?: NextFunction) {
@@ -50,9 +51,10 @@ export default class ArticleModel extends PageModel {
 			}
 		});
 
-		// query.then(data => res.json(data));
+		next();
 	}
 
+	// POST
 	static addResponse(req: Request, res: Response, next?: NextFunction) {
 		// Add a comment/response to an article
 	}

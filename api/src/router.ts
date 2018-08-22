@@ -1,6 +1,7 @@
 import * as express from 'express';
 
 import API from './apis/api';
+import SiteAPI from './apis/site.api';
 import ArticleModel from './apis/models/article.model';
 import PageModel from './apis/models/page.model';
 import UserModel from './apis/models/user.model';
@@ -14,7 +15,8 @@ const router: express.Router = express.Router();
 // GET
 // router.get('*', Controller.init);
 
-router.get('/', API.test.bind(API));
+// router.get('/', API.test.bind(API), API.page.bind(API));
+router.get('/', SiteAPI.site.bind(SiteAPI), SiteAPI.site.bind(SiteAPI));
 
 router.get('/blog', ArticleModel.find.bind(ArticleModel));
 // router.get('/blog/:category');
