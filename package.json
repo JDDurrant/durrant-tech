@@ -4,13 +4,11 @@
   "description": "My personal website",
   "main": "index.js",
   "scripts": {
+    "install": "tsc -p api && tsc -p apps/www",
     "start": "node index.js",
-    "start-api": "node api/bin/server.js",
-    "start-www": "node apps/www/bin/server.js",
-    "test": "nodemon index.js",
-    "build": "tsc -p api && tsc -p apps/www",
-    "build-api": "tsc -p api",
-    "build-www": "tsc -p apps/www"
+    "api": "node api/bin/server.js",
+    "www": "node apps/www/bin/server.js",
+    "test": "nodemon index.js"
   },
   "repository": "git+ssh://git@github.com/JDDurrant/durrant-tech.git",
   "keywords": [
@@ -26,11 +24,30 @@
   },
   "homepage": "https://github.com/JDDurrant/durrant-tech#readme",
   "dependencies": {
-    "dotenv": "^5.0.1"
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "fs-extra": "^6.0.1",
+    "joi": "^13.6.0",
+    "marked": "^0.3.12",
+    "monk": "^6.0.6",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-engine": "^4.5.1"
   },
   "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/fs-extra": "^5.0.4",
+    "@types/joi": "^13.4.3",
+    "@types/morgan": "^1.7.35",
+    "@types/react": "^16.4.11",
+    "morgan": "^1.9.0",
+    "ts-loader": "^4.5.0",
     "typescript": "^2.9.2",
-    "yarn": "^1.9.4"
+    "yarn": "^1.9.4",
+    "webpack": "^4.17.0",
+    "webpack-cli": "^2.1.5"
   },
   "private": true,
   "workspaces": [
