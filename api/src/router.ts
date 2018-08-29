@@ -18,7 +18,7 @@ const router: express.Router = express.Router();
 // router.get('/', API.test.bind(API), API.page.bind(API));
 router.get('/', SiteAPI.site.bind(SiteAPI), SiteAPI.site.bind(SiteAPI));
 
-router.get('/blog', ArticleModel.find.bind(ArticleModel));
+router.get('/articles', ArticleModel.find.bind(ArticleModel));
 // router.get('/blog/:category');
 // router.get('/blog/:category/:slug');
 
