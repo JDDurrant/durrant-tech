@@ -17,11 +17,11 @@ api.use(express.static(__dirname + '/../../public'));
 api.use(router);
 
 // Server
-const host: string = process.env.API_URL || '127.0.0.1';
-const port: number = parseInt(process.env.API_PORT) || 3000;
+// const host: string = process.env.API_URL || '127.0.0.1';
+// const port: number = parseInt(process.env.API_PORT) || 3000;
 
-api.listen(port, host, () => {
-	console.log('API - Listening on %s:%d', host, port);
-});
+// api.listen(port, host, () => {
+// 	console.log('API - Listening on %s:%d', host, port);
+// });
 
 export default api;
