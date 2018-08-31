@@ -4,11 +4,9 @@
   "description": "My personal website",
   "main": "index.js",
   "scripts": {
-    "install": "tsc -p api && tsc -p apps/www",
-    "start": "node index.js",
-    "api": "node api/bin/server.js",
-    "www": "node apps/www/bin/server.js",
-    "test": "nodemon index.js"
+    "install": "tsc",
+    "start": "node bin/site.js",
+    "test": "nodemon bin/site.js"
   },
   "repository": "git+ssh://git@github.com/JDDurrant/durrant-tech.git",
   "keywords": [
