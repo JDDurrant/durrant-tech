@@ -1,0 +1,22 @@
+{
+	"title": "Durrant.tech",
+	"domain": "durrant.tech",
+	"www": "http://localhost:3000",
+	"api": "http://localhost:3001",
+
+	"contact": {
+		"name": "Jack Durrant",
+		"email": "Jack@Durrant.tech"
+	},
+
+	"navigation": [
+		{ "text": "About me",	"url": "/about" },
+		{ "text": "Employment",	"url": "/about/employment" },
+		{ "text": "Education",	"url": "/about/education" },
+
+		{ "text": "Blog",	"url": "http://jackdurrant.com" },
+		{ "text": "Technology",	"url": "http://jackdurrant.com/category/tech" },
+		{ "text": "Reviews",	"url": "http://jackdurrant.com/category/reviews" },
+		{ "text": "Autism",	"url": "http://jackdurrant.com/?s=autism" }
+	]
+}
