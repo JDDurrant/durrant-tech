@@ -1,8 +1,6 @@
 {
 	"title": "Durrant.tech",
 	"domain": "durrant.tech",
-	"www": "http://localhost:3000",
-	"api": "http://localhost:3001",
 
 	"contact": {
 		"name": "Jack Durrant",

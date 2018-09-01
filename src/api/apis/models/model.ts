@@ -1,12 +1,15 @@
+import * as dotenv from 'dotenv';
 import { Request, Response, NextFunction } from 'express';
 import * as Joi from 'joi';
 import monk, { TQuery, ICollection } from 'monk';
 
 import API from '../api';
 
+dotenv.config();
+
 export default class Model extends API {
 
-    static db = monk('localhost:27017/durrant-tech');
+    static db = monk(process.env.DB);
     static collection: ICollection;
     static schema: Joi.Schema;
 

@@ -1,30 +1,69 @@
 import * as React from 'react';
 
 interface Props {
-    title?;
+    page: {
+        title: string;
+    }
+    site: {
+        title: string;
+        domain: string;
+        contact: {
+            name: string;
+            email: string;
+        }
+        navigation: {
+            text: string;
+            url: string;
+        }[]
+    }
+}
+
+interface State {
+    darkMode: boolean;
 }
 
 export default class App extends React.Component {
 
     props: Props;
 
-    message = 'Hello, World!';
+    state: State = {
+        darkMode: false
+    }
 
-    template = (
+    template = props => (
         <html id="app">
             <head>
                 <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
-                <title>Durrant.tech</title>
+                <title>{props.site.title}</title>
+                {/* <script src="/res/js/client.js" /> */}
             </head>
-            <body>
-                <h1>Durrant.tech</h1>
-                <p>{this.message}</p>
-                <p>{this.props.title}</p>
+            <body style={this.styles}>
+                <div>{props.site.title}</div>
+                <h1>{props.page.title}</h1>
+                <nav>
+                    {props.site.navigation.map((link, index) => (
+                        <a href={link.url} key={index}>{link.text}</a>
+                    ))}
+                </nav>
+                <button onClick={this.toggleDarkMode.bind(this)}>
+                    {this.state.darkMode ? 'Disable' : 'Enable'} dark mode
+                </button>
             </body>
         </html>
     );
 
+    styles = {
+        backgroundColour: this.state.darkMode ? '#000' : '#fff',
+        color: this.state.darkMode ? '#fff' : '#000'
+    }
+
+    toggleDarkMode() {
+        this.setState({
+            darkMode: !this.state.darkMode
+        });
+    }
+
     render() {
-        return this.template;
+        return this.template(this.props);
     }
 }
