@@ -6,7 +6,7 @@ import router from './router';
 
 const api = express();
 
-process.env.NODE_ENV == 'development' && api.use(logger(':method /api:url :status :res[content-length] - :response-time ms'));
+process.env.NODE_ENV == 'development' && api.use(logger(':method :url :status :res[content-length] - :response-time ms'));
 
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: true }));

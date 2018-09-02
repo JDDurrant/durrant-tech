@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-module.exports = {
+const clientBundle = {
 	entry: `${__dirname}/src/apps/www/client.tsx`,
 	module: {
 		rules: [
@@ -20,3 +20,9 @@ module.exports = {
     },
     mode: process.env.NODE_ENV
 };
+
+// const clientModules = {}
+// const serverModules = {}
+// const stylesheet = {}
+
+module.exports = [clientBundle];
